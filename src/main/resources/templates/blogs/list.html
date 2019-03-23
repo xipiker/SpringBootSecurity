@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>this is list</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>博客编号</td>
+        <td>博客名称</td>
+        <td>博客描述</td>
+    </tr>
+    <tr th:each="list : ${listResult}">
+        <td th:text="${list.id}">1</td>
+        <td th:text="${list.name}">张三</td>
+        <td th:text="${list.content}">18</td>
+        <td>
+            <form th:action="@{/blogs/}+${list.id}" method="get" style="float:right;">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit">删除</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
